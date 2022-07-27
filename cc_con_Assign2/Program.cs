@@ -17,9 +17,11 @@ namespace cc_con_Assign2
 
         static List<Borrower> Borrowers_Details = new List<Borrower>();
 
-
         static void Main(string[] args)
         {
+
+            Borrower bor = new Borrower();
+         
             string c;
 
             int value;
@@ -204,11 +206,11 @@ namespace cc_con_Assign2
                             Console.WriteLine();
                             Console.WriteLine(String.Format("{0,20}", "MENU"));
                             Console.WriteLine(String.Format("{0,20}", "------------------------------"));
-                            Console.WriteLine(String.Format("{0,19}", "1.Register"));
-                            Console.WriteLine(String.Format("{0,28}", "2.View Your Details"));
-                            Console.WriteLine(String.Format("{0,32}", "3.Borrow Book/Newspaper"));
-                            Console.WriteLine(String.Format("{0,32}", "4.Return Book/Newspaper"));
-                            Console.WriteLine(String.Format("{0,28}", "5.Back to Main Menu"));
+                            Console.WriteLine(String.Format("{0,32}", "1.Borrow Book/Newspaper"));
+                            Console.WriteLine(String.Format("{0,32}", "2.Return Book/Newspaper"));
+                            Console.WriteLine(String.Format("{0,29}", "3.View all Borrowers"));
+                            Console.WriteLine(String.Format("{0,28}", "4.Back to Main Menu"));
+                           
                             Console.WriteLine();
                             Console.WriteLine("Please enter your choice -");
 
@@ -225,18 +227,6 @@ namespace cc_con_Assign2
 
                             {
                                 case 1:
-                                    user.add();
-                                    Console.WriteLine();
-                                    Console.WriteLine("Thank you for REGISTRATION..!");
-           
-                                break;
-
-                                case 2:
-                                    user.view();
-                                    break;
-
-
-                                case 3:
                                 Console.WriteLine(String.Format("{0,20}", "BORROW BOOK/NEWSPAPER"));
                                 Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                                 Console.WriteLine(String.Format("{0,20}", "1.BORROW BOOK"));
@@ -258,7 +248,7 @@ namespace cc_con_Assign2
                                     break;
 
 
-                                case 4:
+                                case 2:
                                 Console.WriteLine(String.Format("{0,20}", "RETURN BOOK/NEWSPAPER"));
                                 Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                                 Console.WriteLine(String.Format("{0,20}", "1.RETURN BOOK"));
@@ -279,8 +269,17 @@ namespace cc_con_Assign2
                                 }
                                 break;
 
+                            case 3:
+                                Console.WriteLine(String.Format("{0,20}", "BOOK/NEWSPAPER BORROWER LIST"));
+                                Console.WriteLine();
+                               
+                                b1.Display_BBook();
+                                
+                                n1.Display_NewsListk();
+                                break;
+
                             }
-                        } while (choice_borrower != 5);
+                        } while (choice_borrower != 4);
                     }
                 if(choice!=3 && choice !=2 && choice !=1)
                 {

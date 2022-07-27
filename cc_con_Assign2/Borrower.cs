@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace cc_con_Assign2
 {
+
     class Borrower
     {
         static int count = 100;
 
-        static List<Borrower> Borrowers_Details = new List<Borrower>();
+       public static List<Borrower> Borrowers_Details = new List<Borrower>();
        
 
 
         public string Name { get; set; }
 
         public int MemberId { get; set; }
-
-        public string BookName { get; set; }
-
-        public int BookId { get; set; }
 
         public string Email { get; set; }
 

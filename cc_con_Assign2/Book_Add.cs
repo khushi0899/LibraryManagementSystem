@@ -9,12 +9,20 @@ namespace cc_con_Assign2
 
     class Book_Add : Methods
     {
+        DateTime dt = new DateTime();
+
         string date = DateTime.UtcNow.ToString("MM-dd-yyyy");
 
+        static int count = 5;
         public int Id { get; set; }
 
         public string Name { get; set; }
 
+        public string user_name { get; set; }
+
+        public string borrow_date { get; set; }
+
+       
         public int AvaiBookCopys;
         public override int ItemCopys {
             get
@@ -30,15 +38,19 @@ namespace cc_con_Assign2
 
         static List<Book_Add> book = new List<Book_Add>();
 
-        static List<Borrower> Borrowers_Details = new List<Borrower>();
+        
+
+        static List<Book_Add> Borrower_BookList = new List<Book_Add>();  //list of all borrowers
+
+
 
         public void avilable_book()
         {
-            book.Add(new Book_Add() { Id = 1, Name = "Book1 ", AvaiBookCopys = 2 });
-            book.Add(new Book_Add() { Id = 2, Name = "Book2", AvaiBookCopys = 4 });
-            book.Add(new Book_Add() { Id = 3, Name = "Book3", AvaiBookCopys = 5 });
-            book.Add(new Book_Add() { Id = 4, Name = "Book4", AvaiBookCopys = 8 });
-            book.Add(new Book_Add() { Id = 5, Name = "Book5" , AvaiBookCopys = 5});
+            book.Add(new Book_Add() { Id =1, Name = "Think And Grow Rich ", AvaiBookCopys = 2 });
+            book.Add(new Book_Add() { Id =2, Name = "Gratest Salesman", AvaiBookCopys = 4 });
+            book.Add(new Book_Add() { Id =3,Name = "Power of Motivation", AvaiBookCopys = 5 });
+            book.Add(new Book_Add() { Id =4, Name = "Your Favourit here", AvaiBookCopys = 8 });
+            book.Add(new Book_Add() { Id = 5, Name = "Awaken the Giant" , AvaiBookCopys = 5});
         }
 
         public override void Add()                 //Add book
@@ -50,9 +62,10 @@ namespace cc_con_Assign2
             {
                 Console.WriteLine("\tEnter Book Name :");
                 string name = Console.ReadLine();
-                Console.WriteLine("\tEnter Book Id: ");
-                int id = int.Parse(Console.ReadLine());
-                book.Add(new Book_Add() { Id = id, Name = name});
+                Console.WriteLine("\tEnter No of Book Copies: ");
+                int avaiBookCopys = int.Parse(Console.ReadLine());
+                book.Add(new Book_Add() { Id = ++count,Name = name, AvaiBookCopys = avaiBookCopys
+            });
             }
         }
 
@@ -66,7 +79,7 @@ namespace cc_con_Assign2
 
             Console.WriteLine(String.Format("{0,20}", "Search Deatils"));
             Console.WriteLine();
-            Console.WriteLine("{0,5} {1,18}", "Id", "Name");
+            Console.WriteLine("{0,-20} {1,-20} {2,-20}", "Id", "Name", "Available Copies");
 
             var v = from b in book
                     where b.Id == b_id
@@ -74,7 +87,7 @@ namespace cc_con_Assign2
 
             foreach (Book_Add b in v)
             {
-                Console.WriteLine("{0,5} {1,20}", b.Id, b.Name);
+                Console.WriteLine("{0,-20} {1,-20} {2,-20}", b.Id, b.Name, b.AvaiBookCopys);
             }
             Console.WriteLine();
         }
@@ -93,10 +106,10 @@ namespace cc_con_Assign2
             Console.WriteLine();
             Console.WriteLine("\tAfter Deletion All Available Book:");
             Console.WriteLine();
-            Console.WriteLine("{0,15} {1,15}", "Id","Name");
+            Console.WriteLine("{0,-20} {1,-20} {2,-20}", "Id", "Name", "Available Copies");
             foreach (Book_Add b in book)
             {
-                Console.WriteLine("{0,15} {1,15}",b.Id,b.Name);
+                Console.WriteLine("{0,-20} {1,-20} {2,-20}", b.Id, b.Name, b.AvaiBookCopys);
             }
             Console.WriteLine();
         }
@@ -104,29 +117,31 @@ namespace cc_con_Assign2
         {
             Console.WriteLine(String.Format("{0,20}", "ALL AVAILABLE BOOKS"));
             Console.WriteLine();
-            Console.WriteLine("{0,-5} {1,-15},{2,-15}", "Id", "Name", "Available Copies");
+            Console.WriteLine("{0,-20} {1,-20} {2,-20}", "Id", "Name", "Available Copies");
             foreach (Book_Add b in book)
             {
-                Console.WriteLine("{0,-5} {1,-15} {2,-15}", b.Id, b.Name,b.AvaiBookCopys);
+                Console.WriteLine("{0,-20} {1,-20} {2,-20}", b.Id, b.Name,b.AvaiBookCopys);
             }
         }
 
 
         public void borrow_book()
         {
+            int check;
             string date = DateTime.UtcNow.ToString("MM-dd-yyyy");
+            Console.WriteLine(String.Format("{0,20}", "------------------------------"));
             Console.WriteLine("All Books");
             Console.WriteLine();
-            Console.WriteLine("{0,-5} {1,-15} {2,-15}", "Id", "Name","Available Copies");
+            Console.WriteLine("{0,-20} {1,-20} {2,-20}", "Id", "Name","Available Copies");
             foreach (Book_Add b in book)
             {
-                Console.WriteLine("{0,-5} {1,-15} {2,15}", b.Id, b.Name,b.AvaiBookCopys);
+                Console.WriteLine("{0,-20} {1,-20} {2,-20}", b.Id, b.Name,b.AvaiBookCopys);
             }
+            Console.WriteLine(String.Format("{0,20}", "------------------------------"));
             Console.WriteLine();
             Console.WriteLine("Enter Book Id that you want :");
             int b_id = int.Parse(Console.ReadLine());
 
-            //var bk = book.Where(b => b.Id == b_id).Select(b => { b.AvaiBookCopys =AvaiBookCopys-1; return b; });
             
             var v = from b in book
                     where b.Id == b_id
@@ -136,19 +151,29 @@ namespace cc_con_Assign2
             Console.WriteLine();
             foreach (Book_Add b in v)
             {
-                
-                Console.WriteLine(" Book Id  : {0,-5} Book Name:   {1,-15}", b.Id, b.Name);
+                check = b.AvaiBookCopys;
+                if (check > 0)
+                {
+                    Console.WriteLine("Enter your name: ");
+                    string name = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.WriteLine(" Book Id  : {0,-5} \n Book Name:   {1,-15}", b.Id, b.Name);
+                    Console.WriteLine(" Borrow Date :{0}", date);
+                    Console.WriteLine();
+                    Console.WriteLine(" Hey {0}...You got the book",name);
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                    Borrower_BookList.Add(new Book_Add() { Id = b.Id, Name = b.Name, user_name = name, borrow_date = dt.ToUniversalTime().ToString("r")}); 
+                    book.Where(bk => bk.Id == b_id).ToList().ForEach(s => s.AvaiBookCopys = s.AvaiBookCopys - 1);
+
+
+                }
+                else
+                {
+                    Console.WriteLine("Book is not available.");
+                }
             }
-
-            Console.WriteLine(" Borrow Date :{0}", date);
-            Console.WriteLine();
-            Console.WriteLine(" Hey Borrower...You got the book");
-
-            book.Where(b => b.Id == b_id).ToList().ForEach(s => s.AvaiBookCopys = s.AvaiBookCopys-1);
-
-
-            //add borrow book details 
-
             
 
         }
@@ -157,11 +182,34 @@ namespace cc_con_Assign2
         {
             Console.WriteLine("\tEnter  Return Book Id: ");
             int id = int.Parse(Console.ReadLine());
-            Console.WriteLine("\tEnter Return Book Name :");
-            string name = Console.ReadLine();
-            book.Add(new Book_Add() { Id =id, Name =name });
+          
 
-            Console.WriteLine("\tBook Returned Sucessfully");
+            var v = from b in Borrower_BookList
+                    where b.Id == id    
+                    select b;
+
+            foreach(Book_Add bl in v)
+            {
+                if (id == bl.Id)
+                {
+                    book.Where(b => b.Id == id).ToList().ForEach(s => s.AvaiBookCopys = s.AvaiBookCopys + 1);
+                    Console.WriteLine("\tBook Returned Sucessfully");
+                    break;
+                }
+                
+            }
+            
+        }
+
+        public void Display_BBook()
+        {
+            Console.WriteLine(String.Format("{0,20}", "ALL BORROWER BOOK DETAILS"));
+            Console.WriteLine();
+            Console.WriteLine("{0,-20} {1,-20} {2,-25} {3,-25}", "Id", "Book Name", "User Name" ,"Date and Time");
+            foreach (Book_Add b in Borrower_BookList)
+            {
+                Console.WriteLine("{0,-20} {1,-20} {2,-25} {3,-25}", b.Id, b.Name, b.user_name,b.borrow_date);
+            }
         }
 
     }
