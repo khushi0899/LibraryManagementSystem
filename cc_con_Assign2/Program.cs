@@ -11,11 +11,11 @@ namespace cc_con_Assign2
 {
     class Program
     {
-        static List<Book_Add> book = new List<Book_Add>();
+      //  static List<Book_Add> book = new List<Book_Add>();
 
-        static List<Newspaper> newspaper = new List<Newspaper>();
+       // static List<Newspaper> newspaper = new List<Newspaper>();
 
-        static List<Borrower> Borrowers_Details = new List<Borrower>();
+       // static List<Borrower> Borrowers_Details = new List<Borrower>();
 
         static void Main(string[] args)
         {
@@ -71,6 +71,7 @@ namespace cc_con_Assign2
                     do
                     {
                         Console.WriteLine();
+                        Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                         Console.WriteLine(String.Format("{0,60}", "LIBRARIAN"));
                         Console.WriteLine(String.Format("{0,25}", "What do you want to manage today -"));
                         Console.WriteLine(String.Format("{0,15}", "1. Book"));
@@ -84,7 +85,7 @@ namespace cc_con_Assign2
                         if (Libranian_choice == 1)
                         {
 
-                            Console.WriteLine(String.Format("{0,60}", "BOOK - LIBRARY"));
+                            Console.WriteLine(String.Format("{0,60}", "BOOK - LIBRARY CONTROLLER"));
                             Console.WriteLine();
 
                             do
@@ -92,9 +93,9 @@ namespace cc_con_Assign2
                                 Console.WriteLine(String.Format("{0,20}", "MENU"));
                                 Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                                 Console.WriteLine(String.Format("{0,19}", "1.Add Book"));
-                                Console.WriteLine(String.Format("{0,22}", "2.Search Book"));
-                                Console.WriteLine(String.Format("{0,22}", "3.Remove Book"));
-                                Console.WriteLine(String.Format("{0,25}", "4.View All Books"));
+                                Console.WriteLine(String.Format("{0,21}", "2.View Books"));
+                                Console.WriteLine(String.Format("{0,22}", "3.Search Book"));
+                                Console.WriteLine(String.Format("{0,22}", "4.Remove Book"));
                                 Console.WriteLine(String.Format("{0,28}", "5.Back to Main Menu"));
                                 Console.WriteLine();
                                 Console.WriteLine("Please enter your choice -");
@@ -111,19 +112,20 @@ namespace cc_con_Assign2
                                         break;
 
                                     case 2:
-                                        b1.search();
-                                        break;
-
-                                    case 3:
-                                        b1.delete();
-                                        break;
-
-                                    case 4:
                                         b1.view();
                                         break;
 
+                                    case 3:
+                                        b1.search();
+                                        break;
+
+                                    case 4:
+                                        b1.delete();
+                                        break;
+
                                     case 5:
-                                        Console.WriteLine("Thank you for entering inside Book Library");
+                                        Console.WriteLine("Thank you for entering inside Book Library Controller");
+                                        Console.WriteLine();
                                         break;
                                 }
                             } while (choice_book != 5);
@@ -134,17 +136,18 @@ namespace cc_con_Assign2
                         else if (Libranian_choice == 2)
                         {
 
-                            Console.WriteLine(String.Format("{0,60}", "NEWSPAPER - LIBRARY"));
+                            Console.WriteLine(String.Format("{0,70}", "NEWSPAPER - LIBRARY CONTROLLER"));
                             Console.WriteLine();
 
                             do
                             {
                                 Console.WriteLine(String.Format("{0,20}", "MENU"));
                                 Console.WriteLine(String.Format("{0,20}", "------------------------------"));
+                                
                                 Console.WriteLine(String.Format("{0,24}", "1.Add NEWSPAPER"));
-                                Console.WriteLine(String.Format("{0,27}", "2.Search NEWSPAPER"));
-                                Console.WriteLine(String.Format("{0,27}", "3.Remove NEWSPAPER"));
-                                Console.WriteLine(String.Format("{0,29}", "4.View All NEWSPAPER"));
+                                Console.WriteLine(String.Format("{0,29}", "2.View All NEWSPAPER"));
+                                Console.WriteLine(String.Format("{0,27}", "3.Search NEWSPAPER"));
+                                Console.WriteLine(String.Format("{0,27}", "4.Remove NEWSPAPER"));
                                 Console.WriteLine(String.Format("{0,28}", "5.Back to Main Menu"));
                                 Console.WriteLine();
                                 Console.WriteLine("Please enter your choice -");
@@ -161,19 +164,22 @@ namespace cc_con_Assign2
                                         break;
 
                                     case 2:
-                                        n1.search();
+                                        n1.view();
+                                       
                                         break;
 
                                     case 3:
-                                        n1.delete();
+                                        n1.search();
+                                       
                                         break;
                                         
                                     case 4:
-                                        n1.view();
+                                        n1.delete();
                                         break;
 
                                     case 5:
-                                        Console.WriteLine("Thank you for entering inside Newspaper Library");
+                                        Console.WriteLine("Thank you for entering inside Newspaper Library Controller");
+                                        Console.WriteLine();
                                         break;
                                 }
                             } while (choice_news != 5);
@@ -198,21 +204,23 @@ namespace cc_con_Assign2
                     else if (choice == 2)
                     {
 
-                        Console.WriteLine(String.Format("{0,60}", "BORROWER"));
-                        Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine(String.Format("{0,20}", "------------------------------"));
+                            Console.WriteLine(String.Format("{0,60}", "BORROWER"));
+                            Console.WriteLine();
 
                         do
                         {
                             Console.WriteLine();
-                            Console.WriteLine(String.Format("{0,20}", "MENU"));
+                            Console.WriteLine(String.Format("{0,18}", "BORROWER MENU"));
                             Console.WriteLine(String.Format("{0,20}", "------------------------------"));
-                            Console.WriteLine(String.Format("{0,32}", "1.Borrow Book/Newspaper"));
-                            Console.WriteLine(String.Format("{0,32}", "2.Return Book/Newspaper"));
-                            Console.WriteLine(String.Format("{0,29}", "3.View all Borrowers"));
-                            Console.WriteLine(String.Format("{0,28}", "4.Back to Main Menu"));
+                            Console.WriteLine(String.Format("{0,16}", "1.Book "));
+                            Console.WriteLine(String.Format("{0,20}", "2.Newspaper"));
+                           // Console.WriteLine(String.Format("{0,29}", "3.View all Borrowers"));
+                            Console.WriteLine(String.Format("{0,28}", "3.Back to Main Menu"));
                            
                             Console.WriteLine();
-                            Console.WriteLine("Please enter your choice -");
+                            Console.WriteLine("What do you want to borrow  -");
 
                             choice_borrower = int.Parse(Console.ReadLine());
 
@@ -227,59 +235,86 @@ namespace cc_con_Assign2
 
                             {
                                 case 1:
-                                Console.WriteLine(String.Format("{0,20}", "BORROW BOOK/NEWSPAPER"));
-                                Console.WriteLine(String.Format("{0,20}", "------------------------------"));
-                                Console.WriteLine(String.Format("{0,20}", "1.BORROW BOOK"));
-                                Console.WriteLine(String.Format("{0,25}", "2.BORROW NEWSPAPER"));
-                                Console.WriteLine("Enter your choice: ");
-                                value = int.Parse(Console.ReadLine());
-                                switch (value)
+                                do
                                 {
-                                    case 1:
-                                        borrower.borrow_book();
-                                        break;
-                                    case 2:
-                                        n1.borrow_newspaper();
-                                        break;
-                                    default:
-                                        Console.WriteLine("Invalid option");
-                                        break;
-                                }
+                                    Console.WriteLine(String.Format("{0,15}", "BOOK"));
+                                    Console.WriteLine(String.Format("{0,20}", "------------------------------"));
+                                    Console.WriteLine(String.Format("  {0,20}", "1.BORROW BOOK"));
+                                    Console.WriteLine(String.Format("  {0,20}", "2.RETURN BOOK"));
+                                    Console.WriteLine(String.Format("  {0,33}", "3.VIEW BOOK BORROWERS LIST"));
+                                    Console.WriteLine(String.Format("  {0,26}", "4.Back to Main Menu"));
+                                    
+                                    Console.WriteLine();
+
+
+                                    Console.WriteLine("Enter your choice: ");
+                                    value = int.Parse(Console.ReadLine());
+                                    switch (value)
+                                    {
+                                        case 1:
+                                            b1.borrow_book();
+                                            break;
+                                        case 2:
+                                            b1.return_book();
+                                            // n1.borrow_newspaper();
+                                            break;
+                                        case 3:
+                                            b1.Display_BBook();
+                                            break;
+                                        case 4:
+                                            Console.WriteLine("  {0,20}","Thank you for Borrow Book");
+                                                break;
+                                        default:
+                                            Console.WriteLine("Invalid option");
+                                            break;
+                                    }
+                                } while (value != 4);
                                     break;
 
 
                                 case 2:
-                                Console.WriteLine(String.Format("{0,20}", "RETURN BOOK/NEWSPAPER"));
-                                Console.WriteLine(String.Format("{0,20}", "------------------------------"));
-                                Console.WriteLine(String.Format("{0,20}", "1.RETURN BOOK"));
-                                Console.WriteLine(String.Format("{0,25}", "2.RETURN NEWSPAPER"));
-                                Console.WriteLine("Enter your choice: ");
-                                value = int.Parse(Console.ReadLine());
-                                switch (value)
+                                do
                                 {
-                                    case 1:
-                                       borrower.return_book();
-                                        break;
-                                    case 2:
-                                        n1.return_newspaper();
-                                        break;
-                                    default:
-                                        Console.WriteLine("Invalid option");
-                                        break;
-                                }
+                                    Console.WriteLine(String.Format("{0,20}", "NEWSPAPER"));
+                                    Console.WriteLine(String.Format("{0,20}", "------------------------------"));
+                                    Console.WriteLine(String.Format(" {0,25}", "1.BORROW NEWSPAPER"));
+                                    Console.WriteLine(String.Format(" {0,25}", "2.RETURN NEWSPAPER"));
+                                    Console.WriteLine(String.Format(" {0,37}", "3.VIEW NEWSPAPER BORROWER LIST"));
+                                    Console.WriteLine(String.Format(" {0,26}", "4.Back to Main Menu"));
+                                    Console.WriteLine("Enter your choice: ");
+                                    value = int.Parse(Console.ReadLine());
+                                    switch (value)
+                                    {
+                                        case 1:
+                                            n1.borrow_newspaper();
+                                            break;
+                                        case 2:
+                                            n1.return_newspaper();
+                                            break;
+                                        case 3:
+                                            n1.Display_NewsList();
+                                            break;
+                                        case 4:
+                                            Console.WriteLine("  {0,20}", "Thank you for Borrow Newspaper");
+                                            break;
+                                        default:
+                                            Console.WriteLine("Invalid option");
+                                            break;
+                                    }
+                                }while (value != 4);
                                 break;
 
                             case 3:
-                                Console.WriteLine(String.Format("{0,20}", "BOOK/NEWSPAPER BORROWER LIST"));
                                 Console.WriteLine();
-                               
-                                b1.Display_BBook();
-                                
-                                n1.Display_NewsListk();
+                                Console.WriteLine("Thank you for Borrow");
+                                Console.WriteLine();
                                 break;
 
-                            }
-                        } while (choice_borrower != 4);
+                            default:
+                                Console.WriteLine("Invalid option");
+                                break;
+                        }
+                        } while (choice_borrower != 3);
                     }
                 if(choice!=3 && choice !=2 && choice !=1)
                 {
