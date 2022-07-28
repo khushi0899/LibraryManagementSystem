@@ -48,7 +48,6 @@ namespace cc_con_Assign2
             newspaper.Add(new Newspaper() { Id = 3, Name = "Hindustan Newspaper", AvaiNewspaperCopys =2});
             newspaper.Add(new Newspaper() { Id = 4, Name = "World Newspaper", AvaiNewspaperCopys =1});
 
-
         }
 
         public override void Add()                 //Add book
@@ -76,8 +75,8 @@ namespace cc_con_Assign2
         {
             Console.WriteLine("Enter Newspaper Id:");
             int b_id = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine(String.Format("{0,20}", "Search Details :"));
+
+            Console.WriteLine(String.Format("{0,25}", "Search Deatils"));
             Console.WriteLine();
             Console.WriteLine("    {0,-20} {1,-20} {2,-20}", "Id", "Name", "Available Newspaper Copies");
 
@@ -99,8 +98,11 @@ namespace cc_con_Assign2
 
             var remove_item = newspaper.Single(r => r.Id == b_id);
             newspaper.Remove(remove_item);
-
-            Console.WriteLine(String.Format("    {0,30}", "After Deletion :"));
+            
+            Console.WriteLine("Deleted Sucessfully");
+            Console.WriteLine();
+            Console.WriteLine(String.Format("    {0,30}", "After Deletion "));
+            Console.WriteLine();
             Console.WriteLine("    {0,-20} {1,-20} {2,-20}", "Id", "Name","Available Newspaper Copies");
             foreach (Newspaper n in newspaper)
             {

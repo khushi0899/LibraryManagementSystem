@@ -84,7 +84,7 @@ namespace cc_con_Assign2
 
             Console.WriteLine();
         
-            Console.WriteLine(String.Format("{0,25}", "Search Deatils"));
+            Console.WriteLine(String.Format("{0,40}", "Search Deatils"));
             Console.WriteLine();
             Console.WriteLine("    {0,-20} {1,-20}   {2,-20}", "Id", "Name", "Available Copies");
 
@@ -111,7 +111,7 @@ namespace cc_con_Assign2
             var remove_item = book.Single(r => r.Id == b_id);
             book.Remove(remove_item);
 
-            Console.WriteLine("Sucessfully Deleted ");
+            Console.WriteLine("\t\tSucessfully Deleted ");
             Console.WriteLine();
             Console.WriteLine(String.Format(" {0,20}","\tAfter Deletion All Available Book:"));
             Console.WriteLine();
@@ -213,7 +213,9 @@ namespace cc_con_Assign2
                 if (id == bl.Id)
                 {
                     book.Where(b => b.Id == id).ToList().ForEach(s => s.AvaiBookCopys = s.AvaiBookCopys + 1);
+
                     Borrower_BookList.Where(bk => bk.Id == bl.Id).ToList().ForEach(s => s.return_date = date);
+
                     Console.WriteLine("\tBook Returned Sucessfully");
                     break;
                 }
@@ -235,7 +237,7 @@ namespace cc_con_Assign2
             {
                 Console.WriteLine("    {0,-20} {1,-20}    {2,-25} {3,-25}      {4,-20}", b.Id, b.Name, b.user_name,b.borrow_date,b.return_date);
             }
-           
+            Console.WriteLine(String.Format("{0,20}", "---------------------------------------------------------"));
             Console.WriteLine();
         }
 

@@ -237,6 +237,7 @@ namespace cc_con_Assign2
                                 case 1:
                                 do
                                 {
+                                    Console.WriteLine();
                                     Console.WriteLine(String.Format("{0,15}", "BOOK"));
                                     Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                                     Console.WriteLine(String.Format("  {0,20}", "1.BORROW BOOK"));
@@ -263,6 +264,7 @@ namespace cc_con_Assign2
                                             break;
                                         case 4:
                                             Console.WriteLine("  {0,20}","Thank you for Borrow Book");
+                                            Console.WriteLine();
                                                 break;
                                         default:
                                             Console.WriteLine("Invalid option");
@@ -275,12 +277,14 @@ namespace cc_con_Assign2
                                 case 2:
                                 do
                                 {
+                                    Console.WriteLine();
                                     Console.WriteLine(String.Format("{0,20}", "NEWSPAPER"));
                                     Console.WriteLine(String.Format("{0,20}", "------------------------------"));
                                     Console.WriteLine(String.Format(" {0,25}", "1.BORROW NEWSPAPER"));
                                     Console.WriteLine(String.Format(" {0,25}", "2.RETURN NEWSPAPER"));
                                     Console.WriteLine(String.Format(" {0,37}", "3.VIEW NEWSPAPER BORROWER LIST"));
                                     Console.WriteLine(String.Format(" {0,26}", "4.Back to Main Menu"));
+                                    Console.WriteLine();
                                     Console.WriteLine("Enter your choice: ");
                                     value = int.Parse(Console.ReadLine());
                                     switch (value)
@@ -296,6 +300,8 @@ namespace cc_con_Assign2
                                             break;
                                         case 4:
                                             Console.WriteLine("  {0,20}", "Thank you for Borrow Newspaper");
+                                            Console.WriteLine();
+
                                             break;
                                         default:
                                             Console.WriteLine("Invalid option");
@@ -326,7 +332,9 @@ namespace cc_con_Assign2
                
             } while (choice != 3);
 
-            Console.WriteLine(" \t\tTHANK YOU....!");
+           
+            Console.WriteLine();
+            Console.WriteLine(" \t\t\tTHANK YOU....!");
             Console.WriteLine();
         }
       
