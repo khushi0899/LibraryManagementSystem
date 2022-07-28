@@ -50,7 +50,7 @@ namespace cc_con_Assign2
 
         }
 
-        public override void Add()                 //Add book
+        public override void Add()                     //Add book
         {
             
             Console.WriteLine("How many Newspaper do you want to add");

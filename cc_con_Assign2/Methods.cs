@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cc_con_Assign2
 {
-    abstract public class Methods
+    abstract public class Methods 
     {
         public abstract  int ItemCopys {get; set;}
         public abstract void Add();

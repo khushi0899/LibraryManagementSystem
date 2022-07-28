@@ -40,8 +40,6 @@ namespace cc_con_Assign2
 
         static List<Book_Add> book = new List<Book_Add>();
 
-        
-
         static List<Book_Add> Borrower_BookList = new List<Book_Add>();  //list of all borrowers
 
 
